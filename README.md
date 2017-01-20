@@ -12,7 +12,7 @@ portal/?
 ```
 MsgScriptPathFragment
 ```
-gw_message.php?
+gw_message.php?message=denied
 ```
 PingScriptPathFragment
 ```

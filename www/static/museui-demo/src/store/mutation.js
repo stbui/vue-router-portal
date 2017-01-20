@@ -1,0 +1,1 @@
+export const CHANGE_INDEX_STATE = 'CHANGE_INDEX_STATE'

@@ -54,3 +54,34 @@ img {height: auto;width: auto\9; /* ie8 */}
 .btnbox img{margin-top: 10px;}
 .btntitle{line-height: 30px;height: 30px;}
 .footer{width:100%;text-align: center;line-height: 50px;}
+
+
+.register {
+	padding: 0 15px;
+}
+.register-group {
+	font-size: 18px;
+	padding: 5px 0;
+}
+ .input {
+	 border: 1px solid #ccc;
+	 border-radius: 8px;
+	 /*height: 30px;*/
+	 width: 50%;
+	 font-size: 16px;
+	 padding: 10px;
+	 outline: none;
+ }
+ .btn {
+	 color: #fff;
+	 font-size: 18px;
+	 padding: 10px;
+	 border: 0;
+	 width:100%;
+	 background: #337ab7;
+	 border-radius: 8px;
+ }
+ .btn-block {
+	 margin-top: 10px;
+	 text-align: center;
+ }
