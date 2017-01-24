@@ -10,10 +10,16 @@ export default class extends Base {
     indexAction() {
         let {gw_id, gw_address, gw_port, ip, mac, url} = this.get();
 
-        let server_url = `http://${gw_address}:${gw_port}/wifidog/auth/?token=${think.uuid()}`;
-        // return this.success(server_url);
+        if (this.isJsonp()) {
+            return this.jsonp({
+                [errorConfig.key]: 1000,
+                [errorConfig.msg]: 'login'
+            })
+        } else if (this.isAjax()) {
+            return this.fail(1000, 'login');
+        }
 
-        return this.display()
+        return this.display('index/index')
     }
 
     async noauthAction() {

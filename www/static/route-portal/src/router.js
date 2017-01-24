@@ -7,6 +7,7 @@ import Sigin from './components/Sigin'
 import Auth from './components/Auth'
 import Portal from './components/Portal'
 import footbar from './components/footbar'
+import wx from './components/wx'
 
 Vue.use(Router)
 
@@ -15,9 +16,10 @@ const router = new Router({
   routes: [
     {path: '/', component: Index},
     {path: '/AppBar', component: AppBar},
-    {path: '/login', component: AppBar},
+    {path: '/wx', component: wx},
+    {path: '/login', component: Index},
     {path: '/portal', component: Portal},
-    {path: '/auth', component: Auth},
+    {path: '/verify', component: Auth},
     {path: '/register', component: Register},
     {path: '/footbar', component: footbar},
     {path: '/sigin', component: Sigin}

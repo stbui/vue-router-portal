@@ -1,9 +1,15 @@
-import http from '../xhr'
+// import http from '../xhr'
+var http = require('../xhr')
 
 export default {
   register (params, cb) {
     var url = '/api/user'
     http.get(url, params, cb)
+  },
+
+  auth (params, cb) {
+    let url = '/api/auth'
+    http.get(url, {token: params}, cb)
   }
 }
 

@@ -1,14 +1,17 @@
 import Vue from 'vue'
-import App from './App'
+import VueRouter from 'vue-router'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
-import VueRouter from 'vue-router'
+import VueCookie from 'vue-cookie'
 import router from './router'
 import store from './store'
+import App from './App'
+
 Vue.use(VueRouter)
 Vue.use(MuseUI)
+Vue.use(VueCookie)
 
-new Vue({ // eslint-disable-line
+new Vue({
   el: '#app',
   render: h => h(App),
   router,

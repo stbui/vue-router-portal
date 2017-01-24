@@ -32,18 +32,16 @@ export default class extends think.service.base {
     // }
 
     getContent() {
-        let fn = think.promisify(request.get, request);
-
-        return fn(this.url).then((response)=>{
-            // console.log(response)
-          return response;
-        }).catch(()=>{
+        let fn = think.promisify(request, request);
+        let response = fn(this.url).catch(()=> {
             return 'error!';
         });
+
+        return response;
     }
 
     async run() {
-        if(!this.url) {
+        if (!this.url) {
             throw new Error(`url must be set`);
         }
 

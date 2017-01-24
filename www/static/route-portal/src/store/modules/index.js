@@ -2,10 +2,10 @@ import * as types from '../mutation'
 const state = {
   index: true,
   list: [
-    {path: '/AppBar', title: '微信'},
+    {path: '/wx', title: '微信'},
     {path: '/register', title: '用户认证'},
     {path: '/sigin', title: '用户登录'},
-    {path: '/auth', title: '一键上网'}
+    {path: '/verify', title: '一键上网'}
   ]
 }
 

@@ -2,7 +2,7 @@
   <div class="wrapper">
     <mu-text-field label="用户名" v-model="user.username" hintText="请输入用户名" labelFloat fullWidth/>
     <mu-text-field label="密码" v-model="user.password" hintText="请输入密码" type="password" labelFloat fullWidth/>
-    <mu-raised-button label="注册" v-on:click="addUser()" primary fullWidth/>
+    <mu-raised-button label="登录" v-on:click="addUser()" primary fullWidth/>
   </div>
 </template>
 
@@ -10,8 +10,6 @@
   .wrapper {
      padding:0 15px;
   }
-
-
 
 </style>
 
@@ -35,8 +33,5 @@ export default {
     }
   }
 }
+
 </script>
-
-
-
-

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mu-appbar title="" fullWidth>
+    <mu-appbar title="wifi认证" fullWidth>
       <mu-icon-button  icon="arrow_back" @click="back" slot="left"/>
     </mu-appbar>
      <router-view></router-view>
