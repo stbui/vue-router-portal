@@ -9,10 +9,10 @@ export default {
     mysql: {
       host: '127.0.0.1',
       port: '',
-      database: '',
-      user: '',
-      password: '',
-      prefix: '',
+      database: 'router',
+      user: 'root',
+      password: 'root',
+      prefix: 'wifi_',
       encoding: 'utf8'
     },
     mongo: {

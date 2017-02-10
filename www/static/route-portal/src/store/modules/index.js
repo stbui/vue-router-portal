@@ -3,8 +3,8 @@ const state = {
   index: true,
   list: [
     {path: '/wx', title: '微信'},
-    {path: '/register', title: '用户认证'},
-    {path: '/sigin', title: '用户登录'},
+    {path: '/register', title: '手机认证'},
+    {path: '/sigin', title: '手机登录'},
     {path: '/verify', title: '一键上网'}
   ]
 }

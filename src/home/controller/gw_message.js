@@ -9,6 +9,11 @@ export default class extends Base {
    */
   indexAction(){
     let params = this.get();
-    return this.json('Pong');
+    if(params.message == 'denied') {
+      return this.fail('认证失败');
+    } else {
+      return this.success('','认证成功');
+    }
   }
+
 }

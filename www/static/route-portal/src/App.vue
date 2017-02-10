@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <mu-appbar title="wifi认证" fullWidth>
-      <mu-icon-button  icon="arrow_back" @click="back" slot="left"/>
+    <mu-appbar title="上网授权" fullWidth>
+      <mu-icon-button v-if="arrow" icon="arrow_back" @click="back" slot="left"/>
     </mu-appbar>
      <router-view></router-view>
   </div>
@@ -16,6 +16,17 @@ export default {
   components: {
     index
   },
+  created () {
+    console.log('created...')
+    if (this.$router.history.current.fullPath === '/') {
+      this.arrow = false
+    }
+  },
+  data () {
+    return {
+      arrow: true
+    }
+  },
   computed: {
     ...mapGetters({
       checkoutindexstate: 'checkoutindexstate'
@@ -23,7 +34,10 @@ export default {
   },
   methods: {
     back: function () {
-      router.back()
+      console.log(1)
+      if (this.$router.history.current.fullPath !== '/') {
+        router.back()
+      }
     }
   }
 }
@@ -32,5 +46,6 @@ export default {
 <style>
 .mu-appbar-title{
   /* 标题不要居中显示*/
+  text-align: center;
 }
 </style>

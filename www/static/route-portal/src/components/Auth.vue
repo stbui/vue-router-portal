@@ -1,7 +1,7 @@
 <template>
   <div class="loading">
     <mu-circular-progress :size="40" :strokeWidth="5"/>
-    <div class="loading-text">认证中...</div>
+    <div class="loading-text">{{message}}</div>
   </div>
 </template>
 
@@ -19,11 +19,22 @@
 <script>
 import api from '../api/index'
 export default {
+  data () {
+    return {
+      message: '认证中...'
+    }
+  },
+
   created () {
-    let cookie = this.$cookie.get('rp-info')
-    let {gw_address, gw_port} = JSON.parse(cookie)
-    let url = `http://${gw_address}:${gw_port}/wifidog/auth?token=4b09611ed4feb691d61d771b31ae5d60`
-    window.location.href = url
+    let token = this.$route.query.token
+    api.auth(token, (data) => {
+      if (data && data.errno === 0) {
+        this.message = '认证成功，正在跳转...'
+        window.location.href = data.data.url
+      } else {
+        this.message = '认证失败'
+      }
+    })
   }
 }
 

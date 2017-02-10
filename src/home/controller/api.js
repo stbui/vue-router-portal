@@ -4,12 +4,8 @@ import Base from './base.js';
 import request from 'request';
 
 export default class extends Base {
-    /**
-     * index action
-     * @return {Promise} []
-     */
+
     indexAction() {
-        //auto render template file index_index.html
         return this.display('index/index');
     }
 
@@ -21,24 +17,47 @@ export default class extends Base {
 
     }
 
+    /*
+     * 允许上网
+     * */
     async authAction() {
         let cookie = this.cookie('rp-info');
+
+        think.log('cookie：', '[Cookie]');
+        think.log(cookie);
+
+        if (think.isEmpty(cookie)) {
+            return this.fail('认证失败');
+        }
+
         let {gw_port, gw_address} = JSON.parse(cookie);
-        let url = `http://${gw_address}:${gw_port}/wifidog/auth/?tonken=4b09611ed4feb691d61d771b31ae5d60`;
+        let token = think.uuid();
+        let url = `http://${gw_address}:${gw_port}/wifidog/auth?token=${token}`;
 
-        // 192.168.1.1:2060/wifidog/auth?token=4b09611ed4feb691d61d771b31ae5d60
+        let wifidogService = think.service('wifidog');
+        let instance = new wifidogService(url);
+        let result = await instance.run();
 
-        // console.log('cookie', cookie, url);
-        // url = 'http://192.168.1.165/portal/?gw_id=cnweaks';
-        //
-        // let service = think.service('wifidog')
-        // let instance = new service(url);
-        // let result = await instance.run();
+        // wifidog服务器异常
+        let errorConfig = this.config('error');
+        if (result[errorConfig.key] == 500) {
+            return this.fail('认证失败');
+        }
 
-        return this.json('验证');
+        try {
+            // 授权失败数据对象
+            result = JSON.parse(result.body);
+            if (result && result.errno == 1000) {
+                return this.fail('认证失败');
+            }
+        } catch (e) {
+            // console.log('数据格式不符');
+        }
+
+        return this.success(JSON.parse(cookie), '认证成功');
     }
 
     portalAction() {
-        this.redirect('/static/museui-demo/dist/');
+        this.redirect('/');
     }
 }

@@ -25,8 +25,11 @@ ul{
   import {mapGetters, mapActions} from 'vuex'
   export default {
     created () {
-      window.localStorage.setItem('rp-info', JSON.stringify(this.$route.query))
-      this.$cookie.set('rp-info', JSON.stringify(this.$route.query))
+      console.log(this.$route.query.gw_id === undefined)
+      if (this.$route.query.gw_id !== undefined) {
+        window.localStorage.setItem('rp-info', JSON.stringify(this.$route.query))
+        this.$cookie.set('rp-info', JSON.stringify(this.$route.query))
+      }
     },
     computed: {
       ...mapGetters({
