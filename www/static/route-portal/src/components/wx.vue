@@ -1,10 +1,17 @@
 <template>
-  <div class="wx">跳转到微信</div>
+  
+  <mu-flexbox justify="center" style="height: 500px">
+    <mu-flexbox-item order="2" class="flex-demo">
+       跳转到微信
+    </mu-flexbox-item>
+    </mu-flexbox>
+
 </template>
 
 <style>
-  .wx {
+  .message {
     text-align:center;
+    padding:8px 0;
   }
 
 </style>

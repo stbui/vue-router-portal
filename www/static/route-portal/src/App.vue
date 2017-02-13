@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mu-appbar title="上网授权" fullWidth>
+    <mu-appbar :title="title" fullWidth>
       <mu-icon-button v-if="arrow" icon="arrow_back" @click="back" slot="left"/>
     </mu-appbar>
      <router-view></router-view>
@@ -17,14 +17,14 @@ export default {
     index
   },
   created () {
-    console.log('created...')
     if (this.$router.history.current.fullPath === '/') {
       this.arrow = false
     }
   },
   data () {
     return {
-      arrow: true
+      arrow: true,
+      title: '上网授权'
     }
   },
   computed: {

@@ -9,7 +9,7 @@ export default class extends Base {
     }
 
     /*
-    * 微信上网授权放行
+    * 微信发起请求认证，通过要返回302重定向
     * */
     authAction() {
         let params = this.get();

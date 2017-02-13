@@ -12,7 +12,13 @@ export default class extends think.service.base {
 
     getContent() {
         let fn = think.promisify(request, request);
-        let response = fn(this.url).catch(() => {
+        let response = fn({
+            url: this.url,
+            headers: {
+                'user-Agent':this.userAgent,
+                'x-real-ip':'192.168.1.184'
+            }
+        }).catch(() => {
             let errorConfig = think.config('error');
             return {
                 [errorConfig.key]: 500,

@@ -8,6 +8,13 @@ export default class extends Base {
      * @return {Promise} []
      */
     indexAction() {
+        let params = this.get();
+
+        if (!think.isEmpty(params)) {
+            let {ip, mac, url} = params;
+            this.model('device').add({ip, mac, url, time: +new Date()});
+        }
+
         return this.display('index/index')
     }
 

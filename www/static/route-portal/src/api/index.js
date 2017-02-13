@@ -15,6 +15,11 @@ export default {
   auth (params, cb) {
     let url = '/api/auth'
     http.get(url, {token: params}, cb)
+  },
+
+  verifyDevice (params, cb) {
+    let url = '/api/verifyDevice'
+    http.get(url, params, cb)
   }
 }
 

@@ -30,7 +30,10 @@ export default {
     api.auth(token, (data) => {
       if (data && data.errno === 0) {
         this.message = '认证成功，正在跳转...'
-        window.location.href = data.data.url
+        // if(data['data']['url']) {
+        //   window.location.href = data.data.url
+        // }
+        window.location.href = data.data.serverUrl
       } else {
         this.message = '认证失败'
       }

@@ -33,13 +33,12 @@ export default {
   },
   methods: {
     loginUser: function () {
-      this.$router.replace('/verify?token=test')
       api.login(this.user, (data) => {
         if (data && data.errno === 0) {
-          this.$router.replace('/verify?token=test')
+          this.$router.replace('/verify?message=allow')
         } else {
           this.dialog = true
-          this.dialogMsg = '系统没有反应过来，请再试试！'
+          this.dialogMsg = data.errmsg || '系统没有反应过来，请再试试！'
         }
       })
     },
