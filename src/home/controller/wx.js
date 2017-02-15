@@ -15,9 +15,14 @@ export default class extends Base {
         let params = this.get();
         let {openId, tid, extend, sigin, timestamp} = params;
         console.log(params);
-        this.status(302);
-        // return this.json('')
-        return this.redirect('/wx/auth');
+
+        let token = think.uuid();
+        let url = `http://192.168.1.1:2060/wifidog/auth?token=${token}`;
+        return this.redirect(url);
+
+        // this.status(302);
+        // return this.success('微信认证成功');
+        // return this.redirect('/wx/auth');
     }
 
 }

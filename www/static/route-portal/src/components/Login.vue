@@ -69,7 +69,10 @@ export default {
     }
   },
   created () {
-    console.log(this)
+    if (this.$route.query.gw_id !== undefined) {
+      window.localStorage.setItem('rp-info', JSON.stringify(this.$route.query))
+      this.$cookie.set('rp-info', JSON.stringify(this.$route.query))
+    }
   },
   methods: {
     loginUser: function () {

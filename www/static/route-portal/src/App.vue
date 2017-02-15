@@ -17,7 +17,8 @@ export default {
     index
   },
   created () {
-    if (this.$router.history.current.fullPath === '/') {
+    console.log(this.$router.history.current.path)
+    if (this.$router.history.current.path === '/login' || this.$router.history.current.path === '/login/') {
       this.arrow = false
     }
   },
